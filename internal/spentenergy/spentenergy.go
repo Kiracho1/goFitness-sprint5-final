@@ -15,16 +15,16 @@ const (
 
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	if steps <= 0 {
-		return 0, fmt.Errorf("количество шагов должно быть больше 0")
+		return 0, fmt.Errorf("steps must be greater than 0")
 	}
 	if duration <= 0 {
-		return 0, fmt.Errorf("длительность тренировки должна быть больше 0")
+		return 0, fmt.Errorf("duration must be greater than 0")
 	}
 	if weight <= 0 {
-		return 0, fmt.Errorf("вес должен быть больше 0")
+		return 0, fmt.Errorf("weight must be greater than 0")
 	}
 	if height <= 0 {
-		return 0, fmt.Errorf("рост должен быть больше 0")
+		return 0, fmt.Errorf("height must be greater than 0")
 	}
 	// Рассчитываем количество калорий
 	result := (weight * MeanSpeed(steps, height, duration) * duration.Hours()) * walkingCaloriesCoefficient
@@ -34,16 +34,16 @@ func WalkingSpentCalories(steps int, weight, height float64, duration time.Durat
 
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	if steps <= 0 {
-		return 0, fmt.Errorf("количество шагов должно быть больше 0")
+		return 0, fmt.Errorf("steps must be greater than 0")
 	}
 	if duration <= 0 {
-		return 0, fmt.Errorf("длительность тренировки должна быть больше 0")
+		return 0, fmt.Errorf("duration must be greater than 0")
 	}
 	if weight <= 0 {
-		return 0, fmt.Errorf("вес должен быть больше 0")
+		return 0, fmt.Errorf("weight must be greater than 0")
 	}
 	if height <= 0 {
-		return 0, fmt.Errorf("рост должен быть больше 0")
+		return 0, fmt.Errorf("height must be greater than 0")
 	}
 	// Рассчитываем количество калорий
 	result := (weight * MeanSpeed(steps, height, duration) * duration.Minutes()) / minInH
@@ -60,6 +60,6 @@ func MeanSpeed(steps int, height float64, duration time.Duration) float64 {
 
 func Distance(steps int, height float64) float64 {
 	lengthStep := height * stepLengthCoefficient
-	NumSteps := lengthStep * float64(steps)
-	return NumSteps / mInKm
+	numSteps := lengthStep * float64(steps)
+	return numSteps / mInKm
 }
